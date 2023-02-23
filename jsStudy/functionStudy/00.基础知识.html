@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础知识</title>
+    <script>
+        function sayHi() {
+            var a = prompt("请输入你的名字")
+            document.getElementById("demo").innerHTML = a
+        }
+        const array = []
+        function arrayChange(arr) {
+            for(let i = 0;i<arr.length;i++){
+                if(Array.isArray(arr[i])){
+                    arrayChange(arr[i])
+                }else array.push(arr[i])
+            }
+            document.getElementById("newArray").innerHTML = array
+            console.log(arrayChange.prototype,'函数的prototype属性');
+        }
+        arrayChange.prototype.a = 123
+        function mcObject() {
+            var mc = new arrayChange([1,[2,[3,[4,5]]],6])
+            console.log(mc.__proto__,'mc对象的prototype属性');
+            console.log(mc.__proto__===arrayChange.prototype,'mc对象的prototype属性是否与函数的prototype属性相等');
+            console.log(mc.a,'mc对象的prototype属性也有属性a');//123
+            mc.a = "我是mc中的a"
+            console.log(mc.__proto__.a,'mc对象自身有a属性'); //123
+            console.log(mc.a,'mc对象自身有a属性'); //我是mc中的a
+            arrayChange.prototype.sayHello = function(){
+                alert('hello')
+            } //向构造函数的原型对象中添加sayHello方法，创建出来的对象也有该方法
+            mc.sayHello()
+        }
+        function protoObject(params) {
+            function myClass() {
+            }
+            myClass.prototype.name = 'lhr'
+            var mc = new myClass()
+            console.log(mc.name);
+            console.log("name" in mc,'使用in方法检查mc中是否有name属性，原型中有该属性也会返回true');
+            console.log(mc.hasOwnProperty('name'),'hasOwnProperty方法可以检查自身是否有某属性');
+            console.log(mc.__proto__.__proto__.__proto__);//Object对象的原型没有原型，如果在Object中依然没有找到，则返回undefined
+        }
+        function Person(name,age,gender) {
+            this.name = name
+            this.age = age
+            this.gender = gender
+        }
+        function showPerson() {
+            var per = new Person('孙悟空',18,'男')
+            console.log(per.toString());
+        }
+    </script>
+</head>
+<body>
+    <button onclick="sayHi()">简单的显示</button>
+    <button onclick="arrayChange([1,[2,[3,[4,5]]],6])">数组扁平化</button>
+    <button onclick="mcObject()">看对象</button>
+    <button onclick="protoObject()">原型对象</button>
+    <button onclick="showPerson()">toString方法</button>
+    <h1 id="demo"></h1>
+    <h1 id="newArray"></h1>
+</body>
+</html>
