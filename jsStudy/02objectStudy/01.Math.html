@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math对象</title>
+    <script>
+        function mathProperty() {
+            var a = Math.PI
+            document.getElementById("curtime").innerHTML = a
+        }
+        function mathAbs() {
+            var a = -1
+            document.getElementById("curtime").innerHTML = Math.abs(a)
+        }
+        function mathCeil() {
+            var a = 1.02
+            document.getElementById("curtime").innerHTML = Math.ceil(a)
+        }
+        function mathFloor() {
+            var a = 1.99
+            document.getElementById("curtime").innerHTML = Math.floor(a)
+        }
+        function mathRandom() {
+            document.getElementById("curtime").innerHTML = Math.random()
+        }
+        function mathRandomInt(x,y) {
+            document.getElementById("curtime").innerHTML = Math.round( Math.random()*(y-x)+x)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mathProperty()" class="btn">Math的属性</button>
+    <button onclick="mathAbs()" class="btn">绝对值</button>
+    <button onclick="mathCeil()" class="btn">上舍入</button>
+    <button onclick="mathFloor()" class="btn">下舍入</button>
+    <button onclick="mathRandom()" class="btn">随机数</button>
+    <button onclick="mathRandomInt(1,6)" class="btn">x-y的随机数</button>
+
+
+    <h1 id="curtime"></h1><br>
+</body>
+</html>
+<style>
+    body
+{
+    margin: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.btn
+{
+    border: 2px solid rgb(0, 165, 124);
+    background: none;
+    color: rgb(0, 165, 124);
+    padding: 20px 40px;
+    font-size: 25px;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1px;
+}
+.btn:hover
+{
+    color: white;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 165, 124);
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.btn:hover::before{
+    height: 190%;
+}
+</style>

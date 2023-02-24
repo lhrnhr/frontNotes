@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>对象</title>
+    <title>Date对象</title>
     <script>
         function createCurTime() {
             var a = new Date
-            document.getElementById("time").innerHTML = a
+            document.getElementById("curtime").innerHTML = a
         }
         function createMyTime() {
             var a = new Date("12/03/2016 11:10:30")
@@ -16,7 +16,32 @@
         }
         function getDate() {
             var a = new Date().getDate()
+            document.getElementById("date").innerHTML = a
+        }
+        function getDay() {
+            var a = new Date().getDay()
             document.getElementById("day").innerHTML = a
+        }
+        function getMonth() {
+            var a = new Date().getMonth()
+            document.getElementById("month").innerHTML = a
+        }
+        function getFullYear() {
+            var a = new Date().getFullYear()
+            document.getElementById("year").innerHTML = a
+        }
+        function getTime() {
+            var a = new Date().getTime()
+            document.getElementById("time").innerHTML = a/1000/60/60/24/365
+            // 时间戳指的是从格林威治时间1970年1月1日，0时0分0秒，到当前日期花费的时间
+        }
+        function getCostTime() {
+            var start = Date.now()
+            for (var i = 0; i < 1000; i++) {
+               console.log(i);
+            }
+            var end = Date.now()
+            document.getElementById("costtime").innerHTML = end-start+'毫秒'
         }
     </script>
 </head>
@@ -28,15 +53,17 @@
     <button onclick="getMonth()" class="btn">获取当前日期是几月</button>
     <button onclick="getFullYear()" class="btn">获取当前日期是年份</button>
     <button onclick="getTime()" class="btn">获取当前日期的时间戳</button>
+    <button onclick="getCostTime()" class="btn">获取当前的时间戳</button>
 
-
-    <h1 id="time"></h1><br>
+    <h1 id="curtime"></h1><br>
     <h1 id="mytime"></h1><br>
     <h1 id="date"></h1><br>
     <h1 id="day"></h1><br>
     <h1 id="month"></h1><br>
     <h1 id="year"></h1><br>
     <h1 id="time"></h1><br>
+    <h1 id="costtime"></h1><br>
+
 
 
 </body>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的方法</title>
+    <script>
+        var str = "Hello Atguigu" //在底层是以字符数组的形式保存
+        function chartAt() {
+            document.getElementById("a").innerHTML = str.charAt(0)
+        }
+        function charCodeAt() {
+            document.getElementById("b").innerHTML = str.charCodeAt(0)
+        }
+        function fromCharCode() {
+            document.getElementById("c").innerHTML = String.fromCharCode(0x2682)
+        }
+        function concat() {
+            document.getElementById("d").innerHTML = str.concat("ok").concat('ok2')
+        }
+        function indexOf() {
+            document.getElementById("e").innerHTML = str.indexOf("u")
+            // 如果有，则返回对应的索引；如果有多个，则返回第一次出现的索引，如果没有找到，则返回-1。第二个参数为查找开始的位置
+        }
+        function lastIndexOf() {
+            document.getElementById("f").innerHTML = str.lastIndexOf("u")
+        }
+        function slice() {
+            document.getElementById("g").innerHTML = str.slice(0,2)
+            // 包括开始，不包括结束
+        }
+        function substring() {
+            document.getElementById("h").innerHTML = str.substring(1)
+            // 包括开始，不包括结束，不能接受负值，传递负值，默认为0，自动调整参数位置，如果第二个小于第一个，则自动交换
+        }
+        function substr() {
+            document.getElementById("i").innerHTML = str.substr(1,4)
+            // 第一个参数是开始索引，第二个参数是截取的个数
+        }
+        function split() {
+            var str = 'abc,fa,dfas,fa'
+            document.getElementById("j").innerHTML = str.split(',')[0]
+            console.log(typeof 'abc,fa,dfas,fa'.split(','));
+            // 将字符拆分成数组，如果传递一个空字符串，则都拆分
+        }
+    </script>
+</head>
+<body>
+    Hello Atguigu
+    <button onclick="chartAt()" class="btn">指导位置的字符</button>
+    <button onclick="charCodeAt()" class="btn">指导位置的字符的二进制编码</button>
+    <button onclick="fromCharCode()" class="btn">根据字符编码获取字符</button>
+    <button onclick="concat()" class="btn">字符串连接</button>
+    <button onclick="indexOf()" class="btn">是否含有指定内容</button>
+    <button onclick="lastIndexOf()" class="btn">是否含有指定内容(从后往前找)</button>
+    <button onclick="slice()" class="btn">slice截取数组</button>
+    <button onclick="substring()" class="btn">substring截取数组</button>
+    <button onclick="substr()" class="btn">substr截取数组</button>
+    <button onclick="split()" class="btn">split拆分</button>
+
+
+    <h1 id="a"></h1><br>
+    <h1 id="b"></h1><br>
+    <h1 id="c"></h1><br>
+    <h1 id="d"></h1><br>
+    <h1 id="e"></h1><br>
+    <h1 id="f"></h1><br>
+    <h1 id="g"></h1><br>
+    <h1 id="h"></h1><br>
+    <h1 id="i"></h1><br>
+    <h1 id="j"></h1><br>
+
+
+
+
+</body>
+</html>
+<style>
+    body
+{
+    margin: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.btn
+{
+    border: 2px solid rgb(0, 165, 124);
+    background: none;
+    color: rgb(0, 165, 124);
+    padding: 20px 40px;
+    font-size: 25px;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1px;
+}
+.btn:hover
+{
+    color: white;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 165, 124);
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.btn:hover::before{
+    height: 190%;
+}
+</style>

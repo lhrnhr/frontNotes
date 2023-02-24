@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+    <script>
+        function newReg() {
+            var reg = new RegExp('a')
+            document.getElementById("a").innerHTML = reg
+            // 使用typeof检查，会返回object
+            // 检查一个字符串中是否含有a
+        }
+        function test() {
+            var reg = new RegExp('a')
+            document.getElementById("b").innerHTML = reg.test('a')
+            // 使用typeof检查，会返回object
+        }
+        function aOrB() {
+            var reg = new RegExp('a|b')
+            document.getElementById("c").innerHTML = reg.test('bc')
+            // 使用typeof检查，会返回object
+        }
+        function isAbcAdcAec() {
+            var reg = new RegExp('a[bde]c')
+            document.getElementById("d").innerHTML = reg.test('bcA')
+            // 使用typeof检查，会返回object
+        }
+        function divideString() {
+            var reg = new RegExp('[A-z]')
+            document.getElementById("e").innerHTML = '1a2b3c4d5e6f'.split(reg)
+            // 使用typeof检查，会返回object
+        }
+    </script>
+</head>
+<body>
+    <button onclick="newReg()" class="btn">正则表达式</button>
+    <button onclick="test()" class="btn">测试方法</button>
+    <button onclick="aOrB()" class="btn">a或b</button>
+    <button onclick="isZimu()" class="btn">是否有字母</button>
+    <button onclick="isAbcAdcAec()" class="btn">是否有指定组合</button>
+    <button onclick="divideString()" class="btn">根据任意字母拆分字符串</button>
+
+
+    <h1 id="a"></h1><br>
+    <h1 id="b"></h1><br>
+    <h1 id="c"></h1><br>
+    <h1 id="d"></h1><br>
+    <h1 id="e"></h1><br>
+
+
+
+
+</body>
+</html>
+<style>
+    body
+{
+    margin: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.btn
+{
+    border: 2px solid rgb(0, 165, 124);
+    background: none;
+    color: rgb(0, 165, 124);
+    padding: 20px 40px;
+    font-size: 25px;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1px;
+}
+.btn:hover
+{
+    color: white;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 165, 124);
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.btn:hover::before{
+    height: 190%;
+}
+</style>
