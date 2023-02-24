@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+    <script>
+        function createCurTime() {
+            var a = new Date
+            document.getElementById("time").innerHTML = a
+        }
+        function createMyTime() {
+            var a = new Date("12/03/2016 11:10:30")
+            document.getElementById("mytime").innerHTML = a
+        }
+        function getDate() {
+            var a = new Date().getDate()
+            document.getElementById("day").innerHTML = a
+        }
+    </script>
+</head>
+<body>
+    <button onclick="createCurTime()" class="btn">当前时间</button>
+    <button onclick="createMyTime()" class="btn">指定时间</button>
+    <button onclick="getDate()" class="btn">获取某一天</button>
+
+    <h1 id="time"></h1><br>
+    <h1 id="mytime"></h1><br>
+    <h1 id="day"></h1><br>
+
+</body>
+</html>
+<style>
+    body
+{
+    margin: 0;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.btn
+{
+    border: 2px solid rgb(0, 165, 124);
+    background: none;
+    color: rgb(0, 165, 124);
+    padding: 20px 40px;
+    font-size: 25px;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1px;
+}
+.btn:hover
+{
+    color: white;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 165, 124);
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.btn:hover::before{
+    height: 190%;
+}
+</style>

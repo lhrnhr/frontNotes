@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+    <script>
+        function sayHi() {
+            var a = prompt("请输入你的名字")
+            document.getElementById("demo").innerHTML = a
+        }
+        const array = []
+        function arrayChange(arr) {
+            for(let i = 0;i<arr.length;i++){
+                if(Array.isArray(arr[i])){
+                    arrayChange(arr[i])
+                }else array.push(arr[i])
+            }
+            document.getElementById("newArray").innerHTML = array
+            console.log(arrayChange.prototype,'函数的prototype属性');
+        }
+        function createArr() {
+            var arr = new Array()
+            console.log(arr);
+            arr[0]= 1
+            console.log(arr);
+            console.log(Array.prototype,'数组的原型对象');
+            console.log(arr.length,'数组的长度');
+            arr[10]=1
+            console.log(arr);
+            var arr2 = []
+            for(var i = 0;i<100;i++){
+                arr2[i]=i
+            }
+            console.log(arr2);
+        }
+        function getArrayElement() {
+            var arr = ['lhr','zy','px','sjy']
+            for(var i =0;i<arr.length;i++){
+                console.log(arr[i]);
+            }
+        }
+        // 构造函数Person
+        function Person(name,age) {
+            this.name = name
+            this.age = age    
+        }
+        function getAdult() {
+            var per = new Person('lhr',19)
+            var per2 = new Person('qq',22)
+            var per3 = new Person('ww',8)
+            var per4 = new Person('hh',33)
+            var per5 = new Person('kk',35)
+            var arr = [per,per2,per3,per4,per5]
+            var newArr = []
+            for(var i =0;i<arr.length;i++){
+                if(arr[i].age>=18){
+                    newArr.push(arr[i])
+                }
+            }
+            console.log(newArr,'满十八岁的人');
+            arr.forEach(function(a){
+                console.log('a',a);
+            })
+        }
+        function eachMethod() {
+            var per = new Person('lhr',19)
+            var per2 = new Person('qq',22)
+            var per3 = new Person('ww',8)
+            var per4 = new Person('hh',33)
+            var per5 = new Person('kk',35)
+            var arr = [per,per2,per3,per4,per5]
+            arr.forEach(function(a,b,c){
+                console.log('传递的三个参数',a,b,c);
+            })
+        }
+        function arrCut() {
+            var arr = ['lhr','zy','px','sjy']
+            console.log(arr.slice(0,1)); // 第一个参数是开始位置的索引，第二个参数是结束位置的索引
+            console.log(arr.splice(0,2,'牛魔王','红矮黑人')); // 第一个参数是开始位置的索引，第二个参数是删除的数量，第三个参数是添加的新的元素，自动插入到开始位置索引前边
+            console.log(arr);
+        }
+        function cutRepeat() {
+            var arr = [1,2,3,2,2,1,3,4,2,5]
+            for (let i = 0; i< arr.length; i++) {
+              const element = arr[i];
+               for (let j = i+1; j < arr.length; j++) {
+                   const element2 = arr[j];
+                   if(element===element2){
+                    arr.splice(j,1)
+                    // 当删除当前j所在元素后，后面的元素会自动不为，此时不会再比较中国元素，需要再比一次当前位置
+                    j--
+                   }
+               }
+            }
+            console.log(arr);
+        }
+        function otherMethods() {
+            var arr = ['lhr','zy','px','sjy']
+            console.log(arr.join());
+            console.log(arr.reverse());
+            console.log(arr.sort());
+            var arr2 = [2,3,11]
+            // console.log(arr2.sort())
+            arr2.sort(function(a,b){
+                // if(a<b){
+                //     return 1 //如果前面小，则交换位置，最后降序
+                // }else if(a>b){
+                //     return -1 //如果前面大，则不交换位置，最后降序
+                // }else{
+                //     return 0 //如果相等，则不交换位置
+                // }
+                return b-a //降序
+                // return a-b //升序
+            })
+            console.log(arr2);
+        }
+        function functionMethods() {
+            function fun() {
+                console.log(arguments);
+            }
+            fun.call({})
+            fun.apply({})
+            // console.log(fun.prototype.call());
+        }
+        function argumentsShow() {
+            function fun() {
+            console.log(arguments);
+            console.log(arguments.callee === fun);
+
+            }
+            fun(1,true)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="createArr()" class="btn">数组创建</button>
+    <button onclick="getArrayElement()" class="btn">数组遍历</button>
+    <button onclick="getAdult()" class="btn">获取指定年龄的对象</button>
+    <button onclick="eachMethod()" class="btn">forEach方法</button>
+    <button onclick="arrCut()" class="btn">数组截取</button>
+    <button onclick="cutRepeat()" class="btn">去除重复元素</button><br>
+    <button onclick="otherMethods()" class="btn">数组的其他方法</button>
+    <button onclick="functionMethods()" class="btn">函数对象的方法</button>
+    <button onclick="argumentsShow()" class="btn">arguments</button>
+    <h1 id="demo"></h1>
+    <h1 id="newArray"></h1>
+</body>
+</html>
+<style>
+    body
+{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.btn
+{
+    border: 2px solid rgb(0, 165, 124);
+    background: none;
+    color: rgb(0, 165, 124);
+    padding: 20px 40px;
+    font-size: 25px;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1px;
+}
+.btn:hover
+{
+    color: white;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 165, 124);
+    z-index: -1;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    transition: all 0.5s;
+}
+.btn:hover::before{
+    height: 190%;
+}
+</style>
