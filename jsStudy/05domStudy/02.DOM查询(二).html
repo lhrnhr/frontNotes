@@ -1,0 +1,57 @@
+<!--
+ * @Author: lhr
+ * @Date: 2023-02-26 16:36:20
+ * @LastEditors: lhr
+ * @LastEditTime: 2023-02-26 17:04:14
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM查询(二)</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    img{
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="outer">
+    <img src="images/01.jpg" alt="铅笔"><br>
+    <button id="prev" onclick="prevChange()">上一张</button>
+    <button id="next" onclick="nextChange()">下一张</button>
+    <p id="info"></p>
+  </div>
+</body>
+<script>
+  var prev = document.getElementById('prev')
+  var next = document.getElementById('next')
+  var img = document.getElementsByTagName('img')[0]
+  var imgArray = ['images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
+  var index = 0
+  function prevChange(params) {
+    console.log(img);
+    index--
+    if (index<0) {
+      index=imgArray.length-1
+    }
+    img.src = imgArray[index]
+    document.getElementById('info').innerHTML = '总共'+imgArray.length+'图片，当前是第'+(index+1)+'张图片'
+  }
+  function nextChange(params) {
+    index++
+    if(index>3){
+      index=0
+    }
+    img.src = imgArray[index]
+    document.getElementById('info').innerHTML = '总共'+imgArray.length+'图片，当前是第'+(index+1)+'张图片'
+  }
+</script>
+</html>

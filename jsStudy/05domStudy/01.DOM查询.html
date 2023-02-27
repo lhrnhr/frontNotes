@@ -1,0 +1,146 @@
+<!--
+ * @Author: lhr
+ * @Date: 2023-02-26 15:47:20
+ * @LastEditors: lhr
+ * @LastEditTime: 2023-02-26 21:14:42
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM查询</title>
+  <script>
+  /**
+   * @description: 查找#bj节点
+   */    
+  function findBj() {
+    console.log(document.getElementById('bj').innerHTML);
+  }
+  /**
+   * @description: 查找所有li节点
+   */  
+   function findAllLi() {
+    console.log(document.getElementsByTagName('li'));
+    for (var i = 0; i < document.getElementsByTagName('li').length; i++) {
+      const element = document.getElementsByTagName('li')[i];
+      alert(element.innerHTML)
+    }
+  }
+  /**
+   * @description: 查找name=gender的所有节点
+   */  
+   function findNameGender() {
+    console.log(document.getElementsByName('gender'));
+    for (var i = 0; i < document.getElementsByName('gender').length; i++) {
+      const element = document.getElementsByName('gender')[i];
+      alert(element.value)
+    }
+  }
+  /**
+   * @description: 查找#city下的所有li节点
+   */  
+   function findCityLi() {
+    console.log(document.getElementById('city').getElementsByTagName('li'));
+    for (var i = 0; i < document.getElementById('city').getElementsByTagName('li').length; i++) {
+      const element = document.getElementById('city').getElementsByTagName('li')[i];
+      alert(element.innerHTML)
+    }
+  }
+  /**
+   * @description: 返回#city下的所有子节点
+   */  
+   function findCityAll() {
+    console.log(document.getElementById('city').childNodes);
+    console.log(document.getElementById('city').children);
+    for (var i = 0; i < document.getElementById('city').childNodes.length; i++) {
+      const element = document.getElementById('city').childNodes[i];
+      alert(element.innerHTML)
+    }
+  }
+  /**
+   * @description: 返回#phone的第一子节点
+   */  
+   function findPhoneFirst() {
+    console.log(document.getElementById('phone').firstElementChild);
+  }
+  /**
+   * @description: 返回#bj的父节点
+   */  
+   function findBjFather() {
+    console.log(document.getElementById('bj').parentNode);
+  }
+  /**
+   * @description: 返回#Android的前一个兄弟节点
+   */  
+   function findAndroidPrevious() {
+    console.log(document.getElementById('Android').previousSibling);
+  }
+  /**
+   * @description: 返回#username的value属性值
+   */  
+   function findUserName() {
+    console.log(document.getElementById('username').value);
+  }
+  /**
+   * @description: 返回#bj的文本值
+   */  
+   function findBjText() {
+    console.log(document.getElementById('bj').innerHTML);
+    console.log(document.getElementById('bj').firstChild.nodeValue)
+  }
+  </script>
+</head>
+<body>
+  <div id="total">
+    <div class="inner">
+      <p>你喜欢哪个城市</p>
+      <ul id="city">
+        <li id="bj">北京</li>
+        <li>上海</li>
+        <li>杭州</li>
+        <li>深圳</li>
+      </ul>
+      <br>
+      <p>你喜欢哪个游戏</p>
+      <ul id="game">
+        <li id="rl">红警</li>
+        <li>英雄联盟</li>
+        <li>极品飞车</li>
+        <li>魔兽</li>
+      </ul>
+      <br>
+      <p>你手机的操作系统</p>
+      <ul id="phone">
+        <li>IOS</li><li id="Android">Android</li>
+        <li>windows phone</li>
+      </ul>
+    </div>
+    <div class="inner">
+      gender:
+      Male:
+      <input type="radio" name="gender" value="male">
+      Female:
+      <input type="radio" name="gender" value="femal">
+      <br>
+      <br>
+      name:
+      <input type="text" name="name" id="username" value="abcde">
+    </div>
+  </div>
+  <div id="btnList">
+    <div><button id="btn01" onclick="findBj()">查找#bj节点</button></div>
+    <div><button id="btn02" onclick="findAllLi()">查找所有li节点</button></div>
+    <div><button id="btn03" onclick="findNameGender()">查找name=gender的所有节点</button></div>
+    <div><button id="btn04" onclick="findCityLi()">查找#city下的所有li节点</button></div>
+    <div><button id="btn05" onclick="findCityAll()">返回#city下的所有子节点</button></div>
+    <div><button id="btn06" onclick="findPhoneFirst()">返回#phone的第一子节点</button></div>
+    <div><button id="btn07" onclick="findBjFather()">返回#bj的父节点</button></div>
+    <div><button id="btn08" onclick="findAndroidPrevious()">返回#Android的前一个兄弟节点</button></div>
+    <div><button id="btn09" onclick="findUserName()">返回#username的value属性值</button></div>
+    <div><button id="btn10" onclick="findBjText()">返回#bj的文本值</button></div>
+  </div>
+</body>
+</html>
