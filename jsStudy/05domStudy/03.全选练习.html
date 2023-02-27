@@ -2,7 +2,7 @@
  * @Author: lhr
  * @Date: 2023-02-27 14:04:54
  * @LastEditors: lhr
- * @LastEditTime: 2023-02-27 14:04:58
+ * @LastEditTime: 2023-02-27 15:11:31
  * @Description: 使用dom标签的方法，进行全选操作
 -->
 <!DOCTYPE html>
@@ -14,6 +14,80 @@
   <title>全选练习</title>
 </head>
 <body>
-  
+  <form action="" method="post">
+    你爱好的运动是？<input type="checkbox" id="checkedAllBox" onclick="checkedAllbox()"/>全选/全不选<br>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球<br>
+    <input type="button" onclick="checkedAll()" id="checkedAllBtn" value="全 选">
+    <input type="button" onclick="checkedNo()" id="checkedNoBtn" value="全不选">
+    <input type="button" onclick="checkedRev()" id="checkedRevBtn" value="反 选">
+    <input type="button" onclick="send()" id="sendBtn" value="提 交">
+  </form>
 </body>
+<script>
+  function checkedAll(params) {
+    var items = document.getElementsByName('items')
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
+      element.checked = true
+    }
+    document.getElementById('checkedAllBox').checked = true
+  }
+  function checkedNo(params) {
+    var items = document.getElementsByName('items')
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
+      element.checked = false
+    }
+    document.getElementById('checkedAllBox').checked = false
+  }
+  function checkedRev(params) {
+    var items = document.getElementsByName('items')
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
+      if(element.checked){
+        element.checked=false
+      }else element.checked=true
+    }
+    document.getElementById('checkedAllBox').checked = true
+      for (let j = 0; j < items.length; j++) {
+        if (!items.checked) {
+          document.getElementById('checkedAllBox').checked = false
+        }  
+      }
+  }
+  function send(params) {
+    var items = document.getElementsByName('items')
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
+      if(element.checked){
+        console.log(element.value);
+      }
+    }
+  }
+  function checkedAllbox(params) {
+    var items = document.getElementsByName('items')
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
+      // if(element.checked){
+      //   element.checked = false
+      // }else element.checked=true
+      element.checked = document.getElementById('checkedAllBox').checked
+    }
+  }
+  var items = document.getElementsByName('items')
+  for (let i = 0; i < items.length; i++) {
+    const element = items[i];
+    element.onclick = function () {
+      document.getElementById('checkedAllBox').checked = true
+      for (let j = 0; j < items.length; j++) {
+        if (!items[j].checked) {
+          document.getElementById('checkedAllBox').checked = false
+        }  
+      }
+    }
+  }
+</script>
 </html>

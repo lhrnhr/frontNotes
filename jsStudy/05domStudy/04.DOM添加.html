@@ -1,0 +1,64 @@
+<!--
+ * @Author: lhr
+ * @Date: 2023-02-27 15:29:48
+ * @LastEditors: lhr
+ * @LastEditTime: 2023-02-27 16:46:22
+ * @Description: 请填写简介
+-->
+<!--
+ * @Author: lhr
+ * @Date: 2023-02-26 15:47:20
+ * @LastEditors: lhr
+ * @LastEditTime: 2023-02-26 21:14:42
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM增加</title>
+  <script>
+  /**
+   * @description: 增加广州节点
+   */    
+  function addGuangzhou() {
+    var li = document.createElement('li')
+    var text = document.createTextNode('广州')
+    li.appendChild(text)
+    document.getElementById('city').append(li)
+    // 可以使用innerHTML完成dom节点的增删改
+  }
+  /**
+   * @description: 将广州节点插入到北京前
+   */    
+   function insertBeijing() {
+    var li = document.createElement('li')
+    var text = document.createTextNode('广州')
+    li.appendChild(text)
+    var bj = document.getElementById('bj')
+    document.getElementById('city').insertBefore(li,bj) // 通过父节点#city调
+    // document.getElementById('city').replaceChild(li,bj) // 通过父节点#city调
+  }
+  </script>
+</head>
+<body>
+  <div id="total">
+    <div class="inner">
+      <p>你喜欢哪个城市</p>
+      <ul id="city">
+        <li id="bj">北京</li>
+        <li>上海</li>
+        <li>杭州</li>
+        <li>深圳</li>
+      </ul>
+    </div>
+  </div>
+  <div id="btnList">
+    <div><button id="btn01" onclick="addGuangzhou()">增加广州节点</button></div>
+    <div><button id="btn02" onclick="insertBeijing()">将广州节点插入到北京前</button></div>
+
+  </div>
+</body>
+</html>

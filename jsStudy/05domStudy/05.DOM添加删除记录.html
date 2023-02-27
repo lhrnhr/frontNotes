@@ -1,0 +1,109 @@
+<!--
+ * @Author: lhr
+ * @Date: 2023-02-27 16:51:45
+ * @LastEditors: lhr
+ * @LastEditTime: 2023-02-27 21:12:22
+ * @Description: 完成表格的添加删除操作
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表格的添加删除操作</title>
+</head>
+<body>
+  <table id="employeeTable">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Salary</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr>
+      <th>lhr</th>
+      <th>12225018666@qq.com</th>
+      <th>10000000</th>
+      <th><a href="javascript:;">Delete</a></th>
+    </tr>
+    <tr>
+      <th>zy</th>
+      <th>12225018666@qq.com</th>
+      <th>10000000</th>
+      <th><a href="javascript:;">Delete</a></th>
+    </tr>
+    <tr>
+      <th>zyw</th>
+      <th>12225018666@qq.com</th>
+      <th>10000000</th>
+      <th><a href="javascript:;">Delete</a></th>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td class="word">name:</td>
+      <td class="inp">
+        <input type="text" name="empName" id="empName">
+      </td>
+    </tr>
+    <tr>
+      <td class="word">email:</td>
+      <td class="inp">
+        <input type="text" name="email" id="email">
+      </td>
+    </tr>
+    <tr>
+      <td class="word">salary:</td>
+      <td class="inp">
+        <input type="text" name="salary" id="salary">
+      </td>
+    </tr>
+  </table>
+  <button onclick="submmit()">提交</button>
+</body>
+<script>
+  var allA = document.getElementsByTagName('a')
+  for (let i = 0; i < allA.length; i++) {
+    const element = allA[i];
+    element.onclick = function () {
+      // alert(this)
+      var tr = this.parentNode.parentNode //获取tr
+      var name = tr.getElementsByTagName('th')[0].innerHTML
+      var name2 = tr.children[0].innerHTML
+      var flag = confirm('确定删除'+name+'吗？')
+      flag?tr.parentNode.removeChild(tr):null
+      // tr.parentNode.removeChild(tr)
+      // return false
+    }
+  }
+  function submmit(params) {
+    var name = document.getElementById('empName').value
+    var email = document.getElementById('email').value
+    var salary = document.getElementById('salary').value
+    var tr = document.createElement('tr')
+    var td1 = document.createElement('th')
+    var td2 = document.createElement('th')
+    var td3 = document.createElement('th')
+    var td4 = document.createElement('a')
+    td4.href = 'javascript:;'
+    td1.innerHTML = name
+    td2.innerHTML = email
+    td3.innerHTML = salary
+    td4.innerHTML = 'Delete'
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    document.getElementById('employeeTable').getElementsByTagName('tbody')[0].appendChild(tr)
+    td4.onclick = function () {
+      debugger
+      var tr = this.parentNode //获取tr
+      var name = tr.getElementsByTagName('th')[0].innerHTML
+      var name2 = tr.children[0].innerHTML
+      var flag = confirm('确定删除'+name+'吗？')
+      flag?tr.parentNode.removeChild(tr):null
+    }
+  }
+</script>
+</html>
